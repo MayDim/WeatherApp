@@ -21,7 +21,7 @@ const WeatherApp = () => {
         {
             return 0;
         }
-        let url= `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${api_key}`;
+        let url= `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=imperial&appid=${api_key}`;
         let response = await fetch(url);
         let data = await response.json();
 
@@ -32,7 +32,7 @@ const WeatherApp = () => {
 
         humidity[0].innerHTML = data.main.humidity + "%";
         wind[0].innerHTML = Math.floor(data.wind.speed) + "km/h";
-        temperature[0].innerHTML = Math.floor(data.main.temp) + "°C";
+        temperature[0].innerHTML = Math.floor(data.main.temp) + "°F";
         location[0].innerHTML = data.name;
 
         if(data.weather[0].icon === "01d" || data.weather[0].icon === "01n" ){
